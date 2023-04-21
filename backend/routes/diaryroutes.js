@@ -1,27 +1,19 @@
 const express=require('express')
-const {adddiary}=require('../controller/diarycontroller')
+const {adddiary,getall,searchRecord,deleteRecord,updateRecord}=require('../controller/diarycontroller')
 const diaryroutes=express.Router()
 // routes
-diaryroutes.get('/', (req, res) => {
-    res.json({mssg: 'Welcome to the Diary'})
-  })
+diaryroutes.get('/', getall)
   
-  diaryroutes.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single record'})
-  })
+  diaryroutes.get('/:id',searchRecord)
 
 
   // POST a Diary Record
   diaryroutes.post('/', adddiary)
   
   // DELETE  Diary Record
-  diaryroutes.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a record'})
-  })
+  diaryroutes.delete('/:id',deleteRecord)
   
-  // UPDATE a workout
-  diaryroutes.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a record'})
-  })
+  // UPDATE a Record
+  diaryroutes.patch('/:id', updateRecord)
 
 module.exports =diaryroutes
