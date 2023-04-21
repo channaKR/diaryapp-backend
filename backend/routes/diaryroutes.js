@@ -1,5 +1,5 @@
 const express=require('express')
-
+const {adddiary}=require('../controller/diarycontroller')
 const diaryroutes=express.Router()
 // routes
 diaryroutes.get('/', (req, res) => {
@@ -12,9 +12,7 @@ diaryroutes.get('/', (req, res) => {
 
 
   // POST a Diary Record
-  diaryroutes.post('/', (req, res) => {
-    res.json({mssg: 'POST a new record'})
-  })
+  diaryroutes.post('/', adddiary)
   
   // DELETE  Diary Record
   diaryroutes.delete('/:id', (req, res) => {
